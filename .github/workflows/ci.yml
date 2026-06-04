@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '11.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Build
+        run: dotnet build src/dotnet-skill -c Release
+
+      - name: Run from source
+        run: |
+          dotnet run --project src/dotnet-skill -c Release | cat > skill.md
+          cmp -s skill.md skills/dotnet-inspect/SKILL.md
+
+      - name: Pack
+        run: dotnet pack src/dotnet-skill -c Release --no-build -p:OfficialBuild=true
+
+      - name: Upload package
+        uses: actions/upload-artifact@v7
+        with:
+          name: package
+          path: artifacts/package/release/*.nupkg
+          if-no-files-found: error
+
+      - name: Install tool from local package
+        run: |
+          dotnet tool install --tool-path ./.tools dotnet-skill --add-source ./artifacts/package/release --no-cache
+          PATH="$(pwd)/.tools:$PATH" dotnet skill | cat > installed-skill.md
+          cmp -s installed-skill.md skills/dotnet-inspect/SKILL.md

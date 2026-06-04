@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+artifacts/
+
+# User and IDE files
+.vs/
+.idea/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+
+# Packages
+*.nupkg
+*.snupkg
+
+# Local environment
+.env

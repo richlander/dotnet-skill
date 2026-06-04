@@ -1,0 +1,7 @@
+{
+  "exe": "dotnet-skill",
+  "update": {
+    "type": "nuget",
+    "package": "dotnet-skill"
+  }
+}
