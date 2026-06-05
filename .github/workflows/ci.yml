@@ -24,15 +24,15 @@ jobs:
           dotnet-quality: 'preview'
 
       - name: Build
-        run: dotnet build src/dotnet-skill -c Release
+        run: dotnet build src/dotnet-skill/Program.cs -c Release
 
       - name: Run from source
         run: |
-          dotnet run --project src/dotnet-skill -c Release | cat > skill.md
-          cmp -s skill.md skills/dotnet-skill/SKILL.md
+          dotnet run src/dotnet-skill/Program.cs -c Release | cat > skill.md
+          cmp -s skill.md src/dotnet-skill/SKILL.md
 
       - name: Pack
-        run: dotnet pack src/dotnet-skill -c Release --no-build -p:OfficialBuild=true
+        run: dotnet pack src/dotnet-skill/Program.cs -c Release -p:OfficialBuild=true
 
       - name: Upload package
         uses: actions/upload-artifact@v7
@@ -45,4 +45,4 @@ jobs:
         run: |
           dotnet tool install --tool-path ./.tools dotnet-skill --add-source ./artifacts/package/release --no-cache
           PATH="$(pwd)/.tools:$PATH" dotnet skill | cat > installed-skill.md
-          cmp -s installed-skill.md skills/dotnet-skill/SKILL.md
+          cmp -s installed-skill.md src/dotnet-skill/SKILL.md

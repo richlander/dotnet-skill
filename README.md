@@ -18,11 +18,11 @@ dnx dotnet-skill -y
 ## Development
 
 ```bash
-dotnet run --project src/dotnet-skill -c Release
-dotnet pack src/dotnet-skill -c Release
+dotnet run src/dotnet-skill/Program.cs -c Release
+dotnet pack src/dotnet-skill/Program.cs -c Release
 ```
 
-The tool intentionally has no subcommands and no test infrastructure. It prints the current catalog and exits. If this grows to multiple skills later, that should be a separate plural command surface such as `dotnet skills ls` and `dotnet skills show`.
+The app is file-based: `Program.cs` and `SKILL.md` live side by side. The tool intentionally has no subcommands and no test infrastructure. It prints the current catalog and exits. If this grows to multiple skills later, that should be a separate plural command surface such as `dotnet skills ls` and `dotnet skills show`.
 
 ## Publishing
 

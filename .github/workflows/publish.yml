@@ -64,7 +64,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          VERSION=$(grep -oP '(?<=<VersionPrefix>)[^<]+' src/dotnet-skill/dotnet-skill.csproj)
+          VERSION=$(sed -n 's/^#:property VersionPrefix=//p' src/dotnet-skill/Program.cs | head -n 1)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release

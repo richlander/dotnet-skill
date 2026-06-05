@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)SKILL.md" CopyToOutputDirectory="PreserveNewest" Pack="false" />
+    <None Include="$(MSBuildThisFileDirectory)../../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>
