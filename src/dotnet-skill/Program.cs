@@ -1,6 +1,6 @@
 using System.Reflection;
 
-const string SkillResourceName = "dotnet-inspect.SKILL.md";
+const string SkillResourceName = "dotnet-skill.SKILL.md";
 
 var assembly = Assembly.GetExecutingAssembly();
 await using var stream = assembly.GetManifestResourceStream(SkillResourceName);

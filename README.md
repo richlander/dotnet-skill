@@ -1,6 +1,6 @@
 # dotnet-skill
 
-Tiny .NET tool that prints the current .NET agent skill definition to stdout.
+Tiny .NET tool that prints a .NET agent tool catalog to stdout.
 
 ## Install or run
 
@@ -22,7 +22,7 @@ dotnet run --project src/dotnet-skill -c Release
 dotnet pack src/dotnet-skill -c Release
 ```
 
-The tool intentionally has no subcommands and no test infrastructure. If this grows to multiple skills later, that should be a separate plural command surface such as `dotnet skills ls` and `dotnet skills show`.
+The tool intentionally has no subcommands and no test infrastructure. It prints the current catalog and exits. If this grows to multiple skills later, that should be a separate plural command surface such as `dotnet skills ls` and `dotnet skills show`.
 
 ## Publishing
 

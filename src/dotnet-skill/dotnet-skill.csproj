@@ -18,14 +18,14 @@
     <ToolCommandName>dotnet-skill</ToolCommandName>
     <VersionPrefix>0.1.0</VersionPrefix>
     <PackageId>dotnet-skill</PackageId>
-    <Description>Prints the .NET agent skill definition.</Description>
+    <Description>Prints the .NET agent tool catalog.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PublishAot>true</PublishAot>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="../../skills/dotnet-inspect/SKILL.md" LogicalName="dotnet-inspect.SKILL.md" />
+    <EmbeddedResource Include="../../skills/dotnet-skill/SKILL.md" LogicalName="dotnet-skill.SKILL.md" />
   </ItemGroup>
 
   <ItemGroup>
