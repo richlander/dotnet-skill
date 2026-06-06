@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)SKILL.md" CopyToOutputDirectory="PreserveNewest" Pack="false" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)SKILL.md" LogicalName="dotnet-skill.SKILL.md" />
     <None Include="$(MSBuildThisFileDirectory)../../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
