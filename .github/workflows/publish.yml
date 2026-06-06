@@ -26,11 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Download package from CI run
+      - name: Download all packages from CI run
         uses: actions/download-artifact@v8
         with:
           path: packages
-          name: package
+          pattern: package-*
+          merge-multiple: true
           run-id: ${{ github.event.inputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,22 +50,37 @@ jobs:
         with:
           user: ${{ secrets.NUGET_USER }}
 
-      - name: Publish package
+      - name: Publish packages
         run: |
-          shopt -s nullglob
-          packages=(packages/dotnet-skill.*.nupkg)
-          if [ ${#packages[@]} -ne 1 ]; then
-            echo "Expected exactly one dotnet-skill package, found ${#packages[@]}." >&2
-            exit 1
-          fi
+          # 1. Publish RID-specific AOT packages first.
+          for pkg in packages/dotnet-skill.win-*.nupkg packages/dotnet-skill.linux-*.nupkg packages/dotnet-skill.osx-*.nupkg; do
+            if [[ -f "$pkg" ]]; then
+              echo "Publishing $pkg"
+              dotnet nuget push "$pkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+            fi
+          done
 
-          dotnet nuget push "${packages[0]}" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          # 2. Publish any (non-AOT) package.
+          for pkg in packages/dotnet-skill.any.*.nupkg; do
+            if [[ -f "$pkg" ]]; then
+              echo "Publishing any package: $pkg"
+              dotnet nuget push "$pkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+            fi
+          done
+
+          # 3. Publish pointer package last.
+          for pkg in packages/dotnet-skill.[0-9]*.nupkg; do
+            if [[ -f "$pkg" ]]; then
+              echo "Publishing pointer package: $pkg"
+              dotnet nuget push "$pkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+            fi
+          done
         shell: bash
 
       - name: Get version
         id: version
         run: |
-          VERSION=$(sed -n 's/^#:property VersionPrefix=//p' src/dotnet-skill/Program.cs | head -n 1)
+          VERSION=$(sed -n 's:.*<VersionPrefix>\([^<]*\)</VersionPrefix>.*:\1:p' src/Directory.Build.props | head -n 1)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release

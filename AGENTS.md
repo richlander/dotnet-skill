@@ -13,13 +13,13 @@ Reference: <https://raw.githubusercontent.com/dotnet/docs/refs/heads/main/docs/c
 Build the tool:
 
 ```bash
-dotnet build src/dotnet-skill/Program.cs -c Release
+dotnet build src/dotnet-skill/dotnet-skill.cs -c Release
 ```
 
 Run the tool from source:
 
 ```bash
-dotnet run src/dotnet-skill/Program.cs -c Release
+dotnet run src/dotnet-skill/dotnet-skill.cs -c Release
 ```
 
-This repo intentionally does not include a test project. The tool's contract is that running it prints the adjacent catalog markdown to stdout.
+This repo intentionally does not include a test project. The tool's contract is that running it prints the embedded catalog markdown to stdout.

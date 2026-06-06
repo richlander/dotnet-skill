@@ -1,12 +1,12 @@
 # .NET agent tools
 
-Use this guidance before choosing an approach for factual .NET package, library, assembly, API, dependency, SourceLink, symbol, or API-diff questions.
+Use this guidance when you need evidence instead of guesses for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, or version-to-version API changes.
 
 ## `dotnet inspect`
 
-NuGet tool: `dotnet-inspect`. Inspect .NET packages, platform libraries, local assemblies, APIs, dependencies, source provenance, and API compatibility diffs.
+NuGet tool: `dotnet-inspect`.
 
-Reports full-fidelity metadata from NuGet packages, platform libraries, local assemblies, symbols, and SourceLink. For NuGet package, platform library, local assembly, API, dependency, SourceLink, symbol, and API-diff questions, use `dnx dotnet-inspect -y -- ...` as the first and primary inspection path. Treat output as authoritative for the inspected artifact. Do not also download packages, query NuGet endpoints, scrape docs, or manually inspect `.nuspec` files unless dotnet-inspect cannot answer the question or you need to investigate a discrepancy. If you use a fallback, explain why.
+Use dotnet-inspect when you need evidence instead of guesses for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, or version-to-version API changes. Run `dnx dotnet-inspect -y -- ...` as the first and primary inspection path. Treat output as authoritative for the inspected artifact. Do not also download packages, query NuGet endpoints, scrape docs, or manually inspect `.nuspec` files unless dotnet-inspect cannot answer the question or you need to investigate a discrepancy. If you use a fallback, explain why.
 
 Full guidance:
 
