@@ -6,4 +6,6 @@ Keep this catalog small. It should help choose the next command, not teach every
 
 ## dotnet-inspect
 
-Use `dotnet-inspect` when you need evidence instead of guesses for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, or version-to-version API changes. First run the `dotnet-inspect` skill: `dnx dotnet-inspect -y -- skill`.
+Find evidence instead of guessing for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, and version-to-version API changes.
+
+First run the `dotnet-inspect` skill: `dnx dotnet-inspect -y -- skill`
