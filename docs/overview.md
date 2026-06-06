@@ -4,6 +4,8 @@
 
 Its purpose is not to document every .NET agent workflow. Its purpose is to give agents a small, always-available router that helps them choose a tool and then delegate to that tool's own skill output.
 
+Part of this project is encouraging a common pattern for agent-adjacent tools: include a `skill` command, always singular, that prints the tool's `SKILL.md` file to stdout. That makes tools self-teaching, because agents can discover current tool-specific guidance from the tool itself.
+
 ## Core idea
 
 `dotnet skill` occupies the same space as `SKILL.md`, `marketplace.json`, and `plugin.json` in other agent ecosystems: it provides a small amount of session-start context that helps an agent decide what capability to load next.
