@@ -14,10 +14,4 @@ Get the authoritative `dotnet-inspect` workflow guide:
 dnx dotnet-inspect -y -- skill
 ```
 
-Then invoke `dotnet-inspect` through `dnx`:
-
-```bash
-dnx dotnet-inspect -y -- <command>
-```
-
 Treat `dotnet-inspect` output as authoritative for inspected artifacts. Do not download packages, query NuGet endpoints, scrape docs, or manually inspect `.nuspec` files unless `dotnet-inspect` cannot answer the question or you need to investigate a discrepancy.
