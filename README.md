@@ -26,7 +26,9 @@ The app is file-based: `dotnet-skill.cs` embeds `SKILL.md` and prints it. The to
 
 ## Design
 
-`dotnet skill` is intentionally a concise router, not a full multi-tool manual. It should print enough guidance for an agent to choose a .NET tool and then run that tool's own skill command for detailed, versioned workflow guidance. See [docs/router-skill-design.md](docs/router-skill-design.md).
+`dotnet skill` is intentionally a concise router, not a full multi-tool manual. It should print enough guidance for an agent to choose a .NET tool and then run that tool's own skill command for detailed, versioned workflow guidance.
+
+Start with [docs/overview.md](docs/overview.md), then see [docs/router-skill-design.md](docs/router-skill-design.md) for the SKILL.md/marketplace/plugin-inspired design rationale.
 
 ## Publishing
 
