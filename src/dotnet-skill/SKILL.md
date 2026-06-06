@@ -1,25 +1,11 @@
 # .NET agent tools
 
-Use this guidance when you need evidence instead of guesses for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, or version-to-version API changes.
+Use this as a router for .NET agent tools. Pick the matching tool, then run that tool's own skill command for current, task-specific guidance.
 
-## `dotnet inspect`
+Keep this catalog small. It should help choose the next command, not teach every workflow.
 
-NuGet tool: `dotnet-inspect`.
+## dotnet-inspect
 
-Use dotnet-inspect when you need evidence instead of guesses for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, or version-to-version API changes. Run `dnx dotnet-inspect -y -- ...` as the first and primary inspection path. Treat output as authoritative for the inspected artifact. Do not also download packages, query NuGet endpoints, scrape docs, or manually inspect `.nuspec` files unless dotnet-inspect cannot answer the question or you need to investigate a discrepancy. If you use a fallback, explain why.
+Find evidence instead of guessing for .NET packages, platform libraries, local assemblies, APIs, dependencies, SourceLink/symbol provenance, and version-to-version API changes.
 
-Full guidance:
-
-```bash
-dnx dotnet-inspect -y -- skill
-```
-
-Invocation and quick starts:
-
-```bash
-dnx dotnet-inspect -y -- <command>
-dnx dotnet-inspect -y -- package System.Text.Json --versions
-dnx dotnet-inspect -y -- type JsonSerializer --package System.Text.Json
-dnx dotnet-inspect -y -- member JsonSerializer --package System.Text.Json -m Serialize
-dnx dotnet-inspect -y -- diff --package System.Text.Json@9.0.0..10.0.0 --breaking
-```
+First run the `dotnet-inspect` skill: `dnx dotnet-inspect -y -- skill`
