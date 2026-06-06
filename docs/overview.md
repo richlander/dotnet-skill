@@ -8,6 +8,8 @@ Its purpose is not to document every .NET agent workflow. Its purpose is to give
 
 `dotnet skill` occupies the same space as `SKILL.md`, `marketplace.json`, and `plugin.json` in other agent ecosystems: it provides a small amount of session-start context that helps an agent decide what capability to load next.
 
+Those files exist to solve capability discovery without loading every capability's full instructions into every session. They provide a compact description, an update/acquisition path, and a pointer to deeper guidance. `dotnet skill` serves the same purpose for .NET, but through the SDK/tooling channel instead of a separate marketplace package. The user has already selected the .NET SDK, and the intended CLI flow can forward to `dnx dotnet-skill` for updates, so the remaining job is to keep the default content small and route agents to tool-owned skills on demand.
+
 The important constraint is **token discipline**. The catalog should stay short. It should describe what tool to use for a task family and where to get detailed, versioned guidance.
 
 ## Architecture
