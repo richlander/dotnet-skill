@@ -21,7 +21,7 @@
     <Authors>Richard Lander</Authors>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>dotnet-skill</ToolCommandName>
-    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionPrefix>0.1.1</VersionPrefix>
     <PackageId>dotnet-skill</PackageId>
     <Description>Prints the .NET agent tool catalog.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
